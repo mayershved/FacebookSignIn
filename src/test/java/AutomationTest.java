@@ -15,7 +15,7 @@ public class AutomationTest extends ProjectTestBase {
     private final String EMAIL = "bob@user.com";
     private final String PASSWORD = "Password123@";
 
-    private RegistrationPageObgect pageObgect = new RegistrationPageObgect(chromeDriver);
+    private RegistrationPageObgect pageObgect = new RegistrationPageObgect();
     private UI_Actions userAction = new UI_Actions(chromeDriver);
 
     Select selMonth, selDay, selYear, selGender;
@@ -26,71 +26,76 @@ public class AutomationTest extends ProjectTestBase {
     }
 
     @Test
-    public void test_02_assertUrl(){
+    public void test_02_assertURL(){
         Assert.assertEquals(FACEBOOK_URL,chromeDriver.getCurrentUrl());
     }
 
     @Test
-    public void test_03_inputUserFirstName(){
+    public void test_03_assertUrl(){
+        Assert.assertEquals(FACEBOOK_URL,chromeDriver.getCurrentUrl());
+    }
+
+    @Test
+    public void test_04_inputUserFirstName(){
         userAction.inputText(pageObgect.inputFirstNameElement,FIRST_NAME);
     }
 
     @Test
-    public void test_04_inputLastName(){
+    public void test_05_inputLastName(){
         userAction.inputText(pageObgect.inputLastNameElement,LAST_NAME);
     }
 
     @Test
-    public void test_05_inputEmail(){
+    public void test_06_inputEmail(){
         userAction.inputText(pageObgect.inputEmailElement,EMAIL);
     }
 
     @Test
-    public void test_06_inputConfirmEmail(){
+    public void test_07_inputConfirmEmail(){
         userAction.inputText(pageObgect.inputConfirmEmailElement,EMAIL);
     }
 
     @Test
-    public void test_07_inputPassword(){
+    public void test_08_inputPassword(){
         userAction.inputText(pageObgect.inputPasswordElement,PASSWORD);
     }
 
     @Test
-    public void test_08_choseMonthFromDropMenu(){
+    public void test_09_choseMonthFromDropMenu(){
     selMonth = new Select(userAction.getWebElement(pageObgect.monthDropMenuElement));
     selMonth.selectByVisibleText("Jan");
     }
 
     @Test
-    public void test_09_choseDayFromDropMenu(){
+    public void test_10_choseDayFromDropMenu(){
         selDay = new Select(userAction.getWebElement(pageObgect.dayDropMenuElement));
         selDay.selectByVisibleText("1");
     }
 
     @Test
-    public void test_10_choseYearFromDropMenu(){
+    public void test_11_choseYearFromDropMenu(){
         selYear = new Select(userAction.getWebElement(pageObgect.yearDropMenuElement));
         selYear.selectByVisibleText("1990");
     }
 
     @Test
-    public void test_11_choseGender(){
+    public void test_12_choseGender(){
         userAction.clickElement(pageObgect.genderRadioElement);
     }
 
     @Test
-    public void test_12_chooseGenderPronoun(){
+    public void test_13_chooseGenderPronoun(){
         selGender = new Select(userAction.getWebElement(pageObgect.genderDropMenuElement));
         selGender.selectByValue("1");
     }
 
     @Test
-    public void test_13_inputCustomGender(){
+    public void test_14_inputCustomGender(){
         userAction.inputText(pageObgect.customGenderElement,"gender");
     }
 
     @Test
-    public void test_14_SignUpUser(){
+    public void test_15_SignUpUser(){
         userAction.clickElement(pageObgect.signUpButtonElement);
     }
 }
